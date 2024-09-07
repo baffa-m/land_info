@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('land_records', function (Blueprint $table) {
             $table->id();
             $table->string('app_no')->unique();
-            $table->date('date');
             $table->string('name');
             $table->string('address');
             $table->string('state');
@@ -28,6 +27,7 @@ return new class extends Migration
             $table->decimal('amount_paid', 10, 2);
             $table->string('receipt_no');
             $table->string('land_use');
+            $table->boolean('is_available');
             $table->timestamps();
         });
     }
