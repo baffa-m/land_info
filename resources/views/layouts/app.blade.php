@@ -23,6 +23,7 @@
         <!-- Style Css-->
         <link href="{{ asset('assets/libs/tiny-slider/tiny-slider.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/css/style-green.min.css') }}" id="color-opt" class="theme-opt" rel="stylesheet" type="text/css" />
+        @vite('resources/css/app.css')
 
 
     </head>
@@ -47,7 +48,7 @@
 
         @include('layouts.partial.footer')
 
-        <!-- Switcher End -->
+        @include('layouts.partial.slider')
 
         <!-- Back to top -->
         <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>

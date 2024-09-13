@@ -20,11 +20,10 @@ return new class extends Migration
             $table->string('nationality');
             $table->string('occupation');
             $table->string('block_no');
-            $table->string('plot_no');
+            $table->string('plot_no')->unique();
             $table->string('plot_size');
-            $table->string('lga');
             $table->string('occupancy_no');
-            $table->decimal('amount_paid', 10, 2);
+            $table->decimal('price', 10, 2);
             $table->string('receipt_no');
             $table->string('land_use');
             $table->boolean('is_available');
