@@ -11,6 +11,11 @@ class Type extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+        'land_type'
+    ];
+
+
     public function landRecords(): HasMany
     {
         return $this->hasMany(LandRecords::class);

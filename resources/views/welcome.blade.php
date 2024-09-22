@@ -11,7 +11,7 @@
             <div class="col-12">
                 <div class="title-heading text-center">
                     <h4 class="display-4 fw-bold text-white title-dark mb-3">Find your perfect property</h4>
-                    <p class="para-desc text-white-50 mb-0 mx-auto">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap v5 html page.</p>
+                    <p class="para-desc text-white-50 mb-0 mx-auto">Benefit from our expertise on managing and designing conversion centered around you.</p>
                 </div>
             </div>
         </div><!--end row-->
@@ -150,98 +150,6 @@
                     <a href="{{ route('buy.land')}}" class="mt-3 h6 text-primary">View More Properties <i class="uil uil-angle-right-b align-middle"></i></a>
                 </div>
             </div>
-        </div><!--end row-->
-    </div><!--end container-->
-
-    <div class="container mt-100 mt-60">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="section-title mb-4 pb-2 text-center">
-                    <h4 class="title mb-4">Our Experts</h4>
-                </div>
-            </div><!--end col-->
-        </div><!--end row-->
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mt-4 pt-2">
-                <div class="card team team-primary bg-light text-center rounded shadow border-0">
-                    <div class="card-body">
-                        <div class="position-relative">
-                            <img src="assets/images/client/01.jpg" class="img-fluid avatar avatar-ex-large rounded-circle shadow" alt="">
-                            <ul class="list-unstyled mb-0 team-icon">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="facebook" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="instagram" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="twitter" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="linkedin" class="icons"></i></a></li>
-                            </ul><!--end icon-->
-                        </div>
-                        <div class="content pt-3">
-                            <h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Ronny Jofra</a></h5>
-                            <small class="designation text-muted">Commercial Broker</small>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end col-->
-
-            <div class="col-lg-3 col-md-6 mt-4 pt-2">
-                <div class="card team team-primary bg-light text-center rounded shadow border-0">
-                    <div class="card-body">
-                        <div class="position-relative">
-                            <img src="assets/images/client/04.jpg" class="img-fluid avatar avatar-ex-large rounded-circle shadow" alt="">
-                            <ul class="list-unstyled mb-0 team-icon">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="facebook" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="instagram" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="twitter" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="linkedin" class="icons"></i></a></li>
-                            </ul><!--end icon-->
-                        </div>
-                        <div class="content pt-3">
-                            <h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Micheal Carlo</a></h5>
-                            <small class="designation text-muted">Commercial Broker</small>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end col-->
-
-            <div class="col-lg-3 col-md-6 mt-4 pt-2">
-                <div class="card team team-primary bg-light text-center rounded shadow border-0">
-                    <div class="card-body">
-                        <div class="position-relative">
-                            <img src="assets/images/client/03.jpg" class="img-fluid avatar avatar-ex-large rounded-circle shadow" alt="">
-                            <ul class="list-unstyled mb-0 team-icon">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="facebook" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="instagram" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="twitter" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="linkedin" class="icons"></i></a></li>
-                            </ul><!--end icon-->
-                        </div>
-                        <div class="content pt-3">
-                            <h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Aliana Rosy</a></h5>
-                            <small class="designation text-muted">Commercial Broker</small>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end col-->
-
-            <div class="col-lg-3 col-md-6 mt-4 pt-2">
-                <div class="card team team-primary bg-light text-center rounded shadow border-0">
-                    <div class="card-body">
-                        <div class="position-relative">
-                            <img src="assets/images/client/02.jpg" class="img-fluid avatar avatar-ex-large rounded-circle shadow" alt="">
-                            <ul class="list-unstyled mb-0 team-icon">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="facebook" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="instagram" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="twitter" class="icons"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-primary btn-pills btn-sm btn-icon"><i data-feather="linkedin" class="icons"></i></a></li>
-                            </ul><!--end icon-->
-                        </div>
-                        <div class="content pt-3">
-                            <h5 class="mb-0"><a href="javascript:void(0)" class="name text-dark">Sofia Razaq</a></h5>
-                            <small class="designation text-muted">Commercial Broker</small>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end col-->
         </div><!--end row-->
     </div><!--end container-->
 </section><!--end section-->

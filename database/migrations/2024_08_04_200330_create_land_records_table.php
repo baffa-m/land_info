@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('land_records', function (Blueprint $table) {
             $table->id();
-            $table->string('app_no')->unique();
             $table->string('name');
             $table->string('address');
-            $table->string('state');
             $table->string('nationality');
             $table->string('occupation');
             $table->string('block_no');
@@ -24,9 +22,10 @@ return new class extends Migration
             $table->string('plot_size');
             $table->string('occupancy_no');
             $table->decimal('price', 10, 2);
-            $table->string('receipt_no');
-            $table->string('land_use');
-            $table->boolean('is_available');
+            $table->string('receipt_url');
+            $table->text('additional_info')->nullable();
+            $table->boolean('is_available')->default(0);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

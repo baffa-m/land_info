@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('witness3');
             $table->date('sale_date');
             $table->decimal('sale_amount', 10, 2);
-            $table->string('receipt_no');
+            $table->string('receipt_url');
             $table->timestamps();
         });
     }

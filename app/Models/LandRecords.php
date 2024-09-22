@@ -11,6 +11,23 @@ class LandRecords extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'address',
+        'nationality',
+        'block_no',
+        'plot_no',
+        'plot_size',
+        'occupancy_no',
+        'price',
+        'receipt_url',
+        'additional_info',
+        'is_available',
+        'user_id'
+    ];
+
+
+
     public function landSales(): HasMany
     {
         return $this->hasMany(LandSales::class);

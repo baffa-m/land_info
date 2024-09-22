@@ -26,7 +26,6 @@ class LandRecordsResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('app_no')->required(),
                 TextInput::make('name'),
                 TextInput::make('address'),
                 TextInput::make('state'),
