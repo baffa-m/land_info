@@ -2,21 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LandRecordsResource\Pages;
-use App\Filament\Resources\LandRecordsResource\RelationManagers;
-use App\Models\LandRecords;
 use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\LandRecords;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\LandRecordsResource\Pages;
+use App\Filament\Resources\LandRecordsResource\RelationManagers;
 
 class LandRecordsResource extends Resource
 {
@@ -38,17 +39,8 @@ class LandRecordsResource extends Resource
                 TextInput::make('occupancy_no'),
                 TextInput::make('price'),
                 FileUpload::make('receipt_url')
-                ->label('Upload Receipt')
                 ->disk('public')
                 ->directory('receipts')
-                ->preserveFilenames()
-                ->hint('<a href="' . asset('storage/receipts/' . ($this->landRecord->receipt_url ?? '')) . '" target="_blank">View Uploaded Receipt</a>'),
-                Select::make('land_type_id')->relationship('types', 'land_type'),
-                Select::make('is_available')
-                ->options([
-                    '1' => 'Yes',
-                    '0' => 'No',
-                ])
                 ->required(),
             ]);
     }
@@ -57,29 +49,22 @@ class LandRecordsResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('app_no')->searchable(),
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('address')->searchable(),
                 TextColumn::make('plot_no')->searchable(),
-                TextColumn::make('house_no')->searchable(),
+                TextColumn::make('plot_size')->searchable(),
                 TextColumn::make('price')->searchable(),
-                TextColumn::make('receipt_url')
-                ->label('Receipt')
-                ->formatStateUsing(function ($state) {
-                    return $state
-                        ? '<a href="' . asset('storage/receipts/' . $state) . '" target="_blank">View Receipt</a>'
-                        : 'No Receipt';
-                })
-                ->html(),
-                ImageColumn::make('receipt_url')
-                ->label('Records')
-                ->disk('public'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('viewFile')
+                ->label('View Receipt')
+                ->icon('heroicon-o-eye') // Optional: you can use a different icon
+                ->url(fn ($record) => asset('storage/' . $record->receipt_url)) // URL to view the file
+                ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
