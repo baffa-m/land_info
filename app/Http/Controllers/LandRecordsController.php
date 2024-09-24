@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LandRecords;
 use Illuminate\Http\Request;
 
 class LandRecordsController extends Controller
@@ -33,9 +34,11 @@ class LandRecordsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(LandRecords $land)
     {
-        //
+        $land->with('images');
+        dd($land->images);
+        return view('show-land', compact('land'));
     }
 
     /**

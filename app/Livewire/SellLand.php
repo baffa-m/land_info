@@ -14,8 +14,18 @@ class SellLand extends Component
     use WithFileUploads;
 
     public $showForm = true;
-    public $name, $address, $state, $nationality, $occupation, $block_no, $plot_no, $plot_size, $occupancy_no, $price, $receipt_url, $land_type_id, $additional_info;
+    public $editMode = false;
+
+    public $name, $address, $nationality, $occupation, $block_no, $plot_no, $plot_size, $occupancy_no, $price, $receipt_url, $land_type_id, $additional_info;
     public $images = []; // To store multiple images
+
+    public $landRecords;
+    public $landId;
+
+    public function mount()
+    {
+        $this->landRecords = LandRecords::all();
+    }
 
     protected $rules = [
         'name' => 'required|string',
@@ -48,7 +58,7 @@ class SellLand extends Component
         $receiptPath = $this->receipt_url->store('receipts', 'public');
 
         // Save the land record
-        $landRecord = LandRecord::create([
+        $landRecord = LandRecords::create([
             'name' => $this->name,
             'address' => $this->address,
             'nationality' => $this->nationality,
@@ -95,6 +105,94 @@ class SellLand extends Component
         $this->additional_info = '';
         $this->images = [];
 
+    }
+
+
+    public function editLand($id)
+    {
+        $this->editMode = true;
+        $this->showForm = true;
+
+        $land = LandRecords::findOrFail($id);
+        $this->landId = $land->id;
+        $this->name = $land->name;
+        $this->address = $land->address;
+        $this->nationality = $land->nationality;
+        $this->occupation = $land->occupation;
+        $this->block_no = $land->block_no;
+        $this->plot_no = $land->plot_no;
+        $this->plot_size = $land->plot_size;
+        $this->occupancy_no = $land->occupancy_no;
+        $this->price = $land->price;
+        $this->land_type_id = $land->land_type_id;
+        $this->receipt_url = $land->receipt_url;
+        $this->additional_info = $land->additional_info;
+        // Add other fields like receipt_url, images, additional_info, etc.
+    }
+
+
+    public function updateLand()
+    {
+        // Validate the data including conditional receipt_url validation
+        $validatedData = $this->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'nationality' => 'required',
+            'occupation' => 'required',
+            'block_no' => 'required',
+            'plot_no' => 'required',
+            'plot_size' => 'required',
+            'occupancy_no' => 'required',
+            'price' => 'required|numeric',
+            'images.*' => 'image|max:2048', // Validate images
+            'receipt_url' => $this->receipt_url ? 'mimes:jpeg,png,jpg,pdf|max:2048' : 'nullable', // Conditional receipt validation
+        ]);
+
+        $land = LandRecords::findOrFail($this->landId);
+
+        // Handle receipt upload (use old receipt if not uploaded)
+        if ($this->receipt_url) {
+            $receiptPath = $this->receipt_url->store('receipts', 'public'); // Store new receipt
+        } else {
+            $receiptPath = $land->receipt_url; // Keep old receipt
+        }
+
+        // Update the land record
+        $land->update([
+            'name' => $this->name,
+            'address' => $this->address,
+            'nationality' => $this->nationality,
+            'occupation' => $this->occupation,
+            'block_no' => $this->block_no,
+            'plot_no' => $this->plot_no,
+            'plot_size' => $this->plot_size,
+            'occupancy_no' => $this->occupancy_no,
+            'price' => $this->price,
+            'receipt_url' => $receiptPath,
+            'additional_info' => $this->additional_info,
+            'land_type_id' => $this->land_type_id,
+        ]);
+
+        // Handle new images
+        if (!empty($this->images)) {
+            foreach ($this->images as $image) {
+                $imagePath = $image->store('land_images', 'public');
+                Image::create([
+                    'land_record_id' => $land->id, // Associate with the updated land record
+                    'image_url' => $imagePath,
+                ]);
+            }
+        }
+        $this->resetForm();
+        $this->landRecords = LandRecords::all();
+        $this->showForm = false;
+    }
+
+    // Method to delete a land record
+    public function deleteLand($id)
+    {
+        LandRecords::findOrFail($id)->delete();
+        $this->landRecords = LandRecords::all(); // Refresh the list after deletion
     }
 
     public function render()

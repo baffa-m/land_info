@@ -14,7 +14,7 @@ class BuyLands extends Component
 
     public function filterLands()
     {
-        $lands = LandRecords::query();
+        $lands = LandRecords::where('is_available', true);
 
         // Apply the filters based on user input
         if ($this->plot_size) {
@@ -30,7 +30,7 @@ class BuyLands extends Component
         }
 
         // Return the filtered results
-        return $lands->get();
+        return $lands->with('images')->paginate(10);
     }
 
     public function render()

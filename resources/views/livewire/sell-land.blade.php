@@ -56,14 +56,6 @@
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">State <span class="text-danger">*</span></label>
-                                        <input wire:model="state" type="text" class="form-control" placeholder="Enter state">
-                                        @error('state') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div><!--end col-->
-
-                                <div class="col-md-6">
-                                    <div class="mb-3">
                                         <label class="form-label">Nationality <span class="text-danger">*</span></label>
                                         <input wire:model="nationality" type="text" class="form-control" placeholder="Enter nationality">
                                         @error('nationality') <span class="text-danger">{{ $message }}</span> @enderror
@@ -143,8 +135,15 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Upload Images <span class="text-danger">*</span></label>
-                                        <input wire:model="images" type="file" multiple class="form-control" placeholder="Upload images">
+                                        <input wire:model="images" type="file" multiple class="form-control">
                                         @error('images.*') <span class="text-danger">{{ $message }}</span> @enderror
+
+                                        <!-- Preview uploaded images -->
+                                        @if($editMode && $landId && $images)
+                                            @foreach (json_decode($landRecords->find($landId)->images, true) as $image)
+                                                <img src="{{ Storage::url($image) }}" alt="Image" width="100">
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div><!--end col-->
 
@@ -159,7 +158,13 @@
 
 
                                 <div class="col-sm-12">
-                                    <button wire:click="submitForm" class="btn btn-primary">Submit Property for Sale</button>
+                                    @if ($editMode)
+                                        <!-- Update Existing Record -->
+                                        <button wire:click="updateLand" class="btn btn-primary">Update Property</button>
+                                    @else
+                                        <!-- Submit New Record -->
+                                        <button wire:click="submitForm" class="btn btn-primary">Submit Property for Sale</button>
+                                    @endif
                                 </div><!--end col-->
                             </div><!--end row-->
                         </div><!--end container-->
@@ -192,8 +197,8 @@
                                         <td>{{ $land->price }}</td>
                                         <td><a href="storage/{{ $land->receipt_url }}">Show</a></td>
                                         <td class="text-end p-3">
-                                            <a href="invoice.html" class="btn btn-lg btn-primary">edit</a>
-                                            <a href="#" class="btn btn-lg btn-soft-primary ms-2">delete</a>
+                                            <button wire:click="editLand({{ $land->id }})" class="btn btn-sm btn-soft-primary ms-2">Edit</button>
+                                            <button wire:click="deleteLand({{ $land->id }})" class="btn btn-sm btn-soft-danger ms-2">Delete</button>
                                         </td>
                                     </tr>
                                     @endforeach
