@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LandRecords;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -31,5 +32,12 @@ class HomeController extends Controller
 
         $lands = LandRecords::where('is_available', true);
         return view('buy', compact('lands'));
+    }
+
+    public function logout() {
+        Auth::logout();
+
+        return redirect()->to('/');
+
     }
 }

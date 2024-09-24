@@ -6,11 +6,13 @@ use App\Filament\Resources\LandRecordsResource\Pages;
 use App\Filament\Resources\LandRecordsResource\RelationManagers;
 use App\Models\LandRecords;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,17 +30,20 @@ class LandRecordsResource extends Resource
             ->schema([
                 TextInput::make('name'),
                 TextInput::make('address'),
-                TextInput::make('state'),
                 TextInput::make('nationality'),
                 TextInput::make('occupation'),
                 TextInput::make('block_no'),
                 TextInput::make('plot_no'),
                 TextInput::make('plot_size'),
-                TextInput::make('lga'),
                 TextInput::make('occupancy_no'),
-                TextInput::make('amount_paid'),
-                TextInput::make('receipt_no'),
-                TextInput::make('land_use'),
+                TextInput::make('price'),
+                FileUpload::make('receipt_url')
+                ->label('Upload Receipt')
+                ->disk('public')
+                ->directory('receipts')
+                ->preserveFilenames()
+                ->hint('<a href="' . asset('storage/receipts/' . ($this->landRecord->receipt_url ?? '')) . '" target="_blank">View Uploaded Receipt</a>'),
+                Select::make('land_type_id')->relationship('types', 'land_type'),
                 Select::make('is_available')
                 ->options([
                     '1' => 'Yes',
@@ -55,12 +60,20 @@ class LandRecordsResource extends Resource
                 TextColumn::make('app_no')->searchable(),
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('address')->searchable(),
-                TextColumn::make('state')->searchable(),
                 TextColumn::make('plot_no')->searchable(),
                 TextColumn::make('house_no')->searchable(),
-                TextColumn::make('lga')->searchable(),
-                TextColumn::make('amount_paid')->searchable(),
-                TextColumn::make('receipt_no')->searchable(),
+                TextColumn::make('price')->searchable(),
+                TextColumn::make('receipt_url')
+                ->label('Receipt')
+                ->formatStateUsing(function ($state) {
+                    return $state
+                        ? '<a href="' . asset('storage/receipts/' . $state) . '" target="_blank">View Receipt</a>'
+                        : 'No Receipt';
+                })
+                ->html(),
+                ImageColumn::make('receipt_url')
+                ->label('Records')
+                ->disk('public'),
             ])
             ->filters([
                 //

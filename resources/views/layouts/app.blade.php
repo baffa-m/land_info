@@ -54,6 +54,15 @@
         <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>
         <!-- Back to top -->
 
+        <script>
+            document.addEventListener('livewire:load', function () {
+                Livewire.on('openLoginModal', () => {
+                    var offcanvasElement = new bootstrap.Offcanvas(document.getElementById('offcanvasRight'));
+                    offcanvasElement.show();
+                });
+            });
+        </script>
+
         <!-- javascript -->
         <!-- JAVASCRIPT -->
         <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

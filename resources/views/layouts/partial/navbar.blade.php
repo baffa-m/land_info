@@ -27,12 +27,34 @@
 
         <!--Login button Start-->
         <ul class="buy-button list-inline mb-0">
+
+            @auth
+            <li class="list-inline-item mb-0 ms-1">
+                <div class="dropdown dropdown-primary">
+                    <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('assets/images/avatar.jpg')}}" class="avatar avatar-ex-small rounded-circle" alt=""></button>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3" style="min-width: 200px;">
+                        <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="#">
+                            <img src="{{ asset('assets/images/avatar.jpg')}}" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
+                            <div class="flex-1 ms-2">
+                                <span class="d-block">{{ auth()->user()->name }}</span>
+                                <small class="text-muted"></small>
+                            </div>
+                        </a>
+                        <form action="{{ route('logout')}}" method="post">
+                            @csrf
+                            <button class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+            @else
             <li class="list-inline-item mb-0">
                 <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <div class="login-btn-primary"><span class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="settings" class="fea icon-sm"></i></span></div>
-                    <div class="login-btn-light"><span class="btn btn-icon btn-pills btn-light"><i data-feather="settings" class="fea icon-sm"></i></span></div>
+                    <div class="login-btn-light"><span class="btn btn-icon btn-pills btn-light"><i data-feather="log-in" class="fea icon-sm"></i></span></div>
                 </a>
             </li>
+            @endauth
         </ul>
         <!--Login button End-->
 
@@ -40,7 +62,7 @@
             <!-- Navigation Menu-->
             <ul class="navigation-menu nav-light nav-right">
                 <li><a href="{{ route('index')}}" class="sub-menu-item">Home</a></li>
-                <li><a href="{{ route('sell.land')}}" class="sub-menu-item">Sell</a></li>
+                <li><a href="{{ route('sell.land')}}" wire:click.prevent="$emit('checkAuth')" class="sub-menu-item">Sell</a></li>
                 <li><a href="{{ route('buy.land')}}" class="sub-menu-item">Buy</a></li>
                 <li><a href="{{ route('about.us') }}" class="sub-menu-item">About Us</a></li>
                 <li><a href="{{ route('contact.us') }}" class="sub-menu-item">Contact us</a></li>

@@ -37,4 +37,9 @@ class LandRecords extends Model
     {
         return $this->hasOne(Type::class);
     }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class, 'land_record_id');
+    }
 }

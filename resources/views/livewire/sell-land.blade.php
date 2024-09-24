@@ -139,6 +139,15 @@
                                     </div>
                                 </div><!--end col-->
 
+                                <!-- Image Uploads -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Upload Images <span class="text-danger">*</span></label>
+                                        <input wire:model="images" type="file" multiple class="form-control" placeholder="Upload images">
+                                        @error('images.*') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div><!--end col-->
+
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label class="form-label">Additional Information</label>
@@ -163,28 +172,29 @@
                                 <thead>
                                     <tr>
                                         <th>Address</th>
-                                        <th>Nationality</th>
-                                        <th>Occupation</th>
                                         <th>Block No</th>
                                         <th>Plot No</th>
                                         <th>Plot Size</th>
+                                        <th>Occupancy No</th>
                                         <th>Price</th>
-                                        <th>Receipt No</th>
+                                        <th>Receipt</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($landRecords as $land)
                                     <tr>
-                                        <td>{{ $land->app_no }}</td>
                                         <td>{{ $land->address }}</td>
-                                        <td>{{ $land->nationality }}</td>
-                                        <td>{{ $land->occupation }}</td>
                                         <td>{{ $land->block_no }}</td>
                                         <td>{{ $land->plot_no }}</td>
                                         <td>{{ $land->plot_size }}</td>
                                         <td>{{ $land->occupancy_no }}</td>
                                         <td>{{ $land->price }}</td>
-                                        <td>{{ $land->receipt_url }}</td>
+                                        <td><a href="storage/{{ $land->receipt_url }}">Show</a></td>
+                                        <td class="text-end p-3">
+                                            <a href="invoice.html" class="btn btn-lg btn-primary">edit</a>
+                                            <a href="#" class="btn btn-lg btn-soft-primary ms-2">delete</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

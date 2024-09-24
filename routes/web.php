@@ -16,3 +16,4 @@ Route::post('/sell', [LandRecordsController::class, 'store'])->name('sell.land.s
 Route::get('/buy', [HomeController::class, 'buyLand'])->name('buy.land');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about.us');
 Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact.us');
+Route::post('/logout', [HomeController::class, 'logout'])->name('logout');

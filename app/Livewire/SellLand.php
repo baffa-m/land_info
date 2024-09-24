@@ -2,9 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Models\Type;
+use App\Models\Image;
 use Livewire\Component;
 use App\Models\LandRecords;
-use App\Models\Type;
 use Livewire\WithFileUploads;
 
 class SellLand extends Component
@@ -14,6 +15,7 @@ class SellLand extends Component
 
     public $showForm = true;
     public $name, $address, $state, $nationality, $occupation, $block_no, $plot_no, $plot_size, $occupancy_no, $price, $receipt_url, $land_type_id, $additional_info;
+    public $images = []; // To store multiple images
 
     protected $rules = [
         'name' => 'required|string',
@@ -28,6 +30,8 @@ class SellLand extends Component
         'land_type_id' => 'required|exists:types,id',
         'receipt_url' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
         'additional_info' => 'nullable|string',
+        'images.*' => 'image|max:2048', // Validate each image
+
     ];
 
     public function toggleForm()
@@ -43,8 +47,8 @@ class SellLand extends Component
         // Store the uploaded file and get the path
         $receiptPath = $this->receipt_url->store('receipts', 'public');
 
-        // Save the land record to the database
-        LandRecords::create([
+        // Save the land record
+        $landRecord = LandRecord::create([
             'name' => $this->name,
             'address' => $this->address,
             'nationality' => $this->nationality,
@@ -54,10 +58,20 @@ class SellLand extends Component
             'plot_size' => $this->plot_size,
             'occupancy_no' => $this->occupancy_no,
             'price' => $this->price,
-            'receipt_url' => $receiptPath, // Store the path of the uploaded file
+            'receipt_url' => $receiptPath,
             'land_type_id' => $this->land_type_id,
             'additional_info' => $this->additional_info,
+            'user_id' => auth()->user()->id,
         ]);
+
+        // Save each image and associate with the land record
+        foreach ($this->images as $image) {
+            $imagePath = $image->store('land_images', 'public');
+            Image::create([
+                'land_record_id' => $landRecord->id,
+                'image_url' => $imagePath,
+            ]);
+        }
 
         // Clear form fields
         $this->resetForm();
@@ -79,6 +93,8 @@ class SellLand extends Component
         $this->receipt_url = '';
         $this->land_type_id = '';
         $this->additional_info = '';
+        $this->images = [];
+
     }
 
     public function render()
