@@ -1,6 +1,10 @@
 <div>
     {{-- Stop trying to control. --}}
-
+    <style>
+        .form-control {
+            border-color: #343a40;
+        }
+    </style>
 
     <!-- Hero Start -->
     <section class="bg-half-170 d-table w-100" style="background: url('assets/images/real/1.jpg') center;">
@@ -9,7 +13,8 @@
             <div class="row my-5 justify-content-center">
                 <div class="col-lg-12 text-center">
                     <div class="pages-heading title-heading">
-                        <h2 class="text-white title-dark mb-0"> Find a land </h2>
+                        <h2 class="text-white title-dark mb-0 text-2xl"> Find a land </h2>
+                        <p class="text-white">(Search in real time)</p>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
@@ -34,60 +39,38 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-6 col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Land Size :</label>
+                                        <label class="form-label dark-border">Land Size :</label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="search" class="fea icon-sm icons"></i>
-                                            <input name="plot_size" id="name" type="text" class="form-control ps-5" placeholder="Search (in Sq) :">
+                                            <input wire:model.live.debounce.300ms="plot_size" name="plot_size" id="name" type="text" class="form-control ps-5" placeholder="Search (in Sq) :">
                                         </div>
                                     </div>
                                 </div><!--end col-->
 
                                 <div class="col-lg-3 col-md-6 col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Select Land Type:</label>
-                                        <select name="land_type" class="form-control form-select" id="buy-properties">
-                                            <option>Houses</option>
-                                            <option>Apartment</option>
-                                            <option>Offices</option>
-                                            <option>Townhome</option>
+                                        <label class="form-label dark-border">Select Land Type:</label>
+                                        <select wire:model.live='land_type' name="land_type" class="form-control form-select" id="buy-properties">
+                                            <option value="">Select Land Type</option>
+                                            @foreach ($land_types as $land_type)
+                                            <option value="{{ $land_type->id}}">{{ $land_type->land_type }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div><!--end col-->
 
                                 <div class="col-lg-3 col-md-6 col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Min Price :</label>
-                                        <select class="form-control form-select" name="min_price" id="buy-min-price">
-                                            <option>Min Price</option>
-                                            <option>500</option>
-                                            <option>1000</option>
-                                            <option>2000</option>
-                                            <option>3000</option>
-                                            <option>4000</option>
-                                            <option>5000</option>
-                                            <option>6000</option>
-                                        </select>
+                                        <label class="form-label dark-border">Min Price :</label>
+                                        <input wire:model.live.debounce.300ms="min_price" type="number" class="form-control" name="min_price" placeholder="Min Price"/>
                                     </div>
                                 </div><!--end col-->
 
                                 <div class="col-lg-3 col-md-6 col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Max Price :</label>
-                                        <select class="form-control form-select" name="max_price" id="buy-max-price">
-                                            <option>Max Price</option>
-                                            <option>500</option>
-                                            <option>1000</option>
-                                            <option>2000</option>
-                                            <option>3000</option>
-                                            <option>4000</option>
-                                            <option>5000</option>
-                                            <option>6000</option>
-                                        </select>
+                                        <label class="form-label dark-border">Max Price :</label>
+                                        <input wire:model.live.debounce.300ms="max_price" type="number" class="form-control" name="max_price" placeholder="Max Price"/>
                                     </div>
-                                </div><!--end col-->
-
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <a href="javascript:void(0)" class="btn btn-primary w-100">Search now</a>
                                 </div><!--end col-->
                             </div><!--end row-->
                         </form><!--end form-->
@@ -96,7 +79,7 @@
             </div><!--end row-->
         </div><!--end container-->
 
-        <div class="container mt-100 mt-60">
+        <div class="container mt-10">
             <div class="row">
                 @foreach($lands as $land)
                 <div class="col-lg-4 col-md-6 col-12">
@@ -117,13 +100,13 @@
                             <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center">
                                 <li class="d-flex align-items-center me-3">
                                     <i class="uil uil-compress-arrows fs-5 me-1 text-primary"></i>
-                                    <span class="text-muted">{{ $land->plot_size }}sqf</span>
+                                    <span class="text-muted">Plot Size: {{ $land->plot_size }}sqf</span>
                                 </li>
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
                                 <li class="list-inline-item mb-0">
                                     <span class="text-muted">Price</span>
-                                    <p class="fw-semibold mb-0">${{ $land->price }}</p>
+                                    <p class="fw-semibold mb-0">₦{{ number_format($land->price, 2) }}</p>
                                 </li>
                             </ul>
                         </div>

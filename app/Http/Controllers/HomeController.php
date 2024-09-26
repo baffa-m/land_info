@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index() {
-        return view('welcome');
+        $lands = LandRecords::where('is_available', true)->take(3)->get();
+        return view('welcome', compact('lands'));
     }
 
     public function registerOwner() {

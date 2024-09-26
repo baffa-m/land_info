@@ -19,7 +19,8 @@ class LandSales extends Model
         'witness3',
         'sale_date',
         'sale_amount',
-        'receipt_url'
+        'receipt_url',
+        'receipt_no',
     ];
 
     public function landRecord(): BelongsTo

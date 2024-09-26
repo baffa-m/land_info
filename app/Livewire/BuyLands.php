@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\LandRecords;
+use App\Models\Type;
 
 class BuyLands extends Component
 {
@@ -11,6 +12,7 @@ class BuyLands extends Component
     public $plot_size;
     public $min_price;
     public $max_price;
+    public $land_type;
 
     public function filterLands()
     {
@@ -21,11 +23,16 @@ class BuyLands extends Component
             $lands->where('plot_size', $this->plot_size);
         }
 
-        if ($this->min_price) {
+        if ($this->land_type) {
+            $lands->where('land_type_id', $this->land_type);
+        }
+
+        // Apply price filters only if the values are numeric
+        if (!empty($this->min_price) && is_numeric($this->min_price)) {
             $lands->where('price', '>=', $this->min_price);
         }
 
-        if ($this->max_price) {
+        if (!empty($this->max_price) && is_numeric($this->max_price)) {
             $lands->where('price', '<=', $this->max_price);
         }
 
@@ -37,9 +44,10 @@ class BuyLands extends Component
     {
         // Pass the filtered lands to the view
         $lands = $this->filterLands();
-
+        $land_types = Type::all();
         return view('livewire.buy-lands', [
-            'lands' => $lands
+            'lands' => $lands,
+            'land_types' => $land_types
         ]);
     }
 

@@ -28,6 +28,7 @@ class OffCanvas extends Component
 
     public function checkAuth()
     {
+        dd('here');
         if (!Auth::check()) {
             // User is not authenticated, emit event to open modal
             $this->emit('openLoginModal');

@@ -95,55 +95,38 @@
         </div><!--end row-->
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+            @foreach($lands as $land)
+            <div class="col-lg-4 col-md-6 col-12">
                 <div class="card shop-list border-0 shadow position-relative overflow-hidden">
                     <div class="shop-image position-relative overflow-hidden shadow">
-                        <img src="assets/images/real/property/1.jpg" class="img-fluid" alt="">
-                        <ul class="list-unstyled shop-icons">
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary"><i class="uil uil-estate"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary"><i class="uil uil-heart"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary"><i class="uil uil-camera"></i></a></li>
-                        </ul>
+                        <!-- Display the first image of the land -->
+                        @if($land->images->isNotEmpty())
+                            <img src="{{ asset('storage/' . $land->images->first()->image_url) }}" class="img-fluid" alt="">
+                        @else
+                            <!-- Fallback image if no images available -->
+                            <img src="assets/images/real/property/default.jpg" class="img-fluid" alt="">
+                        @endif
+
                     </div>
                     <div class="card-body content p-4">
-                        <a href="property-detail.html" class="text-dark product-name h6">10765 Hillshire Ave, Baton Rouge, LA 70810, USA</a>
+                        <a href="{{ route('show.land', ['land' => $land ])}}" class="text-dark product-name h6">{{ $land->address }}</a>
 
                         <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center">
                             <li class="d-flex align-items-center me-3">
                                 <i class="uil uil-compress-arrows fs-5 me-1 text-primary"></i>
-                                <span class="text-muted">8000sqf</span>
-                            </li>
-
-                            <li class="d-flex align-items-center me-3">
-                                <i class="uil uil-bed-double fs-5 me-1 text-primary"></i>
-                                <span class="text-muted">4 Beds</span>
-                            </li>
-
-                            <li class="d-flex align-items-center">
-                                <i class="uil uil-bath fs-5 me-1 text-primary"></i>
-                                <span class="text-muted">4 Baths</span>
+                                <span class="text-muted">Plot Size: {{ $land->plot_size }}sqf</span>
                             </li>
                         </ul>
                         <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">
                             <li class="list-inline-item mb-0">
                                 <span class="text-muted">Price</span>
-                                <p class="fw-semibold mb-0">$5000</p>
-                            </li>
-                            <li class="list-inline-item mb-0 text-muted">
-                                <span class="text-muted">Rating</span>
-                                <ul class="fw-semibold text-warning list-unstyled mb-0">
-                                    <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item mb-0"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item mb-0 text-dark">5.0(30)</li>
-                                </ul>
+                                <p class="fw-semibold mb-0">₦{{ number_format($land->price, 2) }}</p>
                             </li>
                         </ul>
                     </div>
                 </div><!--end items-->
             </div><!--end col-->
+            @endforeach
 
             <div class="col-12 mt-4 pt-2">
                 <div class="text-center">

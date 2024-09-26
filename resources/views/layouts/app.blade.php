@@ -12,6 +12,8 @@
         <!-- favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
+        <!-- Tobii Slider -->
+        <link href="{{ asset('assets/libs/tobii/css/tobii.min.css')}}" rel="stylesheet">
         <!-- Bootstrap Css -->
         <link href="{{ asset('assets/css/bootstrap-green.min.css') }}" id="bootstrap-style" class="theme-opt" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
@@ -20,6 +22,7 @@
         <!-- Style Css-->
         <link href="{{ asset('assets/libs/tiny-slider/tiny-slider.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/css/style-green.min.css') }}" id="color-opt" class="theme-opt" rel="stylesheet" type="text/css" />
+        @livewireStyles()
         @vite('resources/css/app.css')
 
 
@@ -51,8 +54,9 @@
         <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>
         <!-- Back to top -->
 
+        @livewireScripts()
         <script>
-            document.addEventListener('livewire:load', function () {
+            document.addEventListener('livewire:initialized', function () {
                 Livewire.on('openLoginModal', () => {
                     var offcanvasElement = new bootstrap.Offcanvas(document.getElementById('offcanvasRight'));
                     offcanvasElement.show();
@@ -63,6 +67,8 @@
         <!-- javascript -->
         <!-- JAVASCRIPT -->
         <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Tobii Slider -->
+        <script src="{{ asset('assets/libs/tobii/js/tobii.min.js')}}"></script>
         <!-- SLIDER -->
         <script src="{{ asset('assets/libs/tiny-slider/min/tiny-slider.js') }}"></script>
         <script src="{{ asset('assets/js/easy_background.js') }}"></script>

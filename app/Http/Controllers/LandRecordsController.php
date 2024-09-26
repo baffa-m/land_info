@@ -37,7 +37,6 @@ class LandRecordsController extends Controller
     public function show(LandRecords $land)
     {
         $land->with('images');
-        dd($land->images);
         return view('show-land', compact('land'));
     }
 
