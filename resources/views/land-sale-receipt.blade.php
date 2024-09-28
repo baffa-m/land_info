@@ -24,7 +24,7 @@
         <p><strong>Buyer Name:</strong> {{ $buyer_name }}</p>
         <p><strong>Seller Name:</strong> {{ $seller_name }}</p>
         <p><strong>Plot No:</strong> {{ $land_record }}</p>
-        <p><strong>Sale Amount:</strong> ${{ number_format($sale_amount, 2) }}</p>
+        <p><strong>Sale Amount:</strong> ₦{{ number_format($sale_amount, 2) }}</p>
         <p><strong>Sale Date:</strong> {{ $sale_date }}</p>
 
         <h4>Witnesses:</h4>

@@ -5,12 +5,10 @@
     <header id="topnav" class="defaultscroll sticky px-20">
         <div class="container">
             <!-- Logo container-->
-            <a class="logo" href="index.html">
+            <a class="logo" href="{{ url("/")}}">
                 <span class="logo-light-mode">
-                    <img src="assets/images/logo-dark.png" class="l-dark" height="24" alt="">
-                    <img src="assets/images/logo-light.png" class="l-light" height="24" alt="">
+                    <h1 class="text-white">Land Sales</h1>
                 </span>
-                <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
             </a>
 
             <!-- End Logo container-->

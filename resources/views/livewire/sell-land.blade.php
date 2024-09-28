@@ -72,7 +72,7 @@
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Block Number <span class="text-danger">*</span></label>
+                                        <label class="form-label">House Number <span class="text-danger">*</span></label>
                                         <input wire:model="block_no" type="text" class="form-control" placeholder="Enter block number">
                                         @error('block_no') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>

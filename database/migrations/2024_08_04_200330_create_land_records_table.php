@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('land_records', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
-            $table->string('nationality');
-            $table->string('occupation');
+            $table->string('address')->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('occupation')->nullable();
             $table->string('block_no');
             $table->string('plot_no')->unique();
             $table->string('plot_size');

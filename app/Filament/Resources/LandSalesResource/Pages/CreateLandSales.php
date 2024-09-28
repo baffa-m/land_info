@@ -16,12 +16,14 @@ class CreateLandSales extends CreateRecord
     // Override the saved method to handle PDF generation and updating land records
     protected function afterSave(): void
     {
-        dd('here');
         $landSale = $this->record;  // The saved LandSales model
 
         // 1. Update the land record with the buyer's name
         $landRecord = LandRecords::find($landSale->land_record_id);
         $landRecord->name = $landSale->buyer_name;
+        $landRecord->address = null;
+        $landRecord->nationality = null;
+        $landRecord->occupation = null;
 
         // 2. Generate PDF receipt
         $pdf = Pdf::loadView('land-sale-receipt', [

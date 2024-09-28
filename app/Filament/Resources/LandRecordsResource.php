@@ -42,6 +42,8 @@ class LandRecordsResource extends Resource
                 ->disk('public')
                 ->directory('receipts')
                 ->required(),
+                Select::make('is_available'),
+
             ]);
     }
 

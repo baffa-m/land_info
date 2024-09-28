@@ -46,8 +46,6 @@
         @yield('content')
 
 
-        @include('layouts.partial.footer')
-
         @include('layouts.partial.slider')
 
         <!-- Back to top -->
