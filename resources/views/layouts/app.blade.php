@@ -78,7 +78,7 @@
         <script>
             easy_background("#home",
                 {
-                    slide: ["assets/images/real/1.jpg", "assets/images/real/2.jpg", "assets/images/real/3.jpg"],
+                    slide: ["assets/images/real/1.jpg", "assets/images/real/2.jpg", "assets/images/real/3.jpg", "assets/images/real/4.jpg"],
                     delay: [4000, 4000, 4000]
                 }
             );

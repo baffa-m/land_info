@@ -10,8 +10,8 @@
         <div class="row mt-5 justify-content-center">
             <div class="col-12">
                 <div class="title-heading text-center">
-                    <h4 class="display-4 fw-bold text-white title-dark mb-3">Find your perfect property</h4>
-                    <p class="para-desc text-white-50 mb-0 mx-auto">Benefit from our expertise on managing and designing conversion centered around you.</p>
+                    <h4 class="display-4 fw-bold text-white title-dark mb-3">Search for your ideal plot</h4>
+                    <p class="para-desc text-white-50 mb-0 mx-auto">Be confident in trusting our services for the best land solutions.</p>
                 </div>
             </div>
         </div><!--end row-->
@@ -27,7 +27,6 @@
                 <div class="section-title mb-4 pb-2 text-center">
                     <span class="badge rounded-pill bg-soft-primary">Process</span>
                     <h4 class="title mt-3 mb-4">How it works</h4>
-                    <p class="text-muted para-desc mb-0 mx-auto">Start working with <span class="text-primary fw-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
@@ -41,9 +40,8 @@
 
                     <div class="card-body p-0 mt-4">
                         <a href="javascript:void(0)" class="title h5 text-dark">Area Search</a>
-                        <p class="text-muted mt-3 mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                        <p class="text-muted mt-3 mb-0">Search Properties by Area.</p>
                         <div class="mt-2">
-                            <a href="javascript:void(0)" class="text-primary">Read More <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                         </div>
                     </div>
                 </div>
@@ -57,9 +55,8 @@
 
                     <div class="card-body p-0 mt-4">
                         <a href="javascript:void(0)" class="title h5 text-dark">Property Lookup</a>
-                        <p class="text-muted mt-3 mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                        <p class="text-muted mt-3 mb-0">Filter properties Dynamically.</p>
                         <div class="mt-2">
-                            <a href="javascript:void(0)" class="text-primary">Read More <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                         </div>
                     </div>
                 </div>
@@ -73,9 +70,8 @@
 
                     <div class="card-body p-0 mt-4">
                         <a href="javascript:void(0)" class="title h5 text-dark">Buy / Sell Property</a>
-                        <p class="text-muted mt-3 mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                        <p class="text-muted mt-3 mb-0">Buy/Sell from range of available lands.</p>
                         <div class="mt-2">
-                            <a href="javascript:void(0)" class="text-primary">Read More <i data-feather="arrow-right" class="fea icon-sm"></i></a>
                         </div>
                     </div>
                 </div>
@@ -88,8 +84,7 @@
             <div class="col-12">
                 <div class="section-title mb-4 pb-2 text-center">
                     <span class="badge rounded-pill bg-soft-primary">Featured Items</span>
-                    <h4 class="title mt-3 mb-4">Latest Property</h4>
-                    <p class="text-muted para-desc mb-0 mx-auto">Start working with <span class="text-primary fw-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                    <h4 class="title mt-3 mb-4">Latest Properties</h4>
                 </div>
             </div><!--end col-->
         </div><!--end row-->

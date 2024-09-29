@@ -61,7 +61,7 @@
 
             <div id="navigation">
                 <!-- Navigation Menu-->
-                <ul class="navigation-menu nav-light nav-right">
+                <ul class="navigation-menu {{ request()->routeIs(['index', 'buy.land', 'sell.land']) ? 'nav-light' : '' }} nav-right">
                     <li><a href="{{ route('index')}}" class="sub-menu-item">Home</a></li>
                     <li><a wire:click.prevent="checkAuth" href="{{ route('sell.land')}}" class="sub-menu-item">Sell</a></li>
                     <li><a href="{{ route('buy.land')}}" class="sub-menu-item">Buy</a></li>

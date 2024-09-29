@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LandRecords;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,9 @@ class HomeController extends Controller
     }
 
     public function contactUs() {
-        return view('contact-us');
+
+        $admin = User::where('id', 1)->first();
+        return view('contact-us', compact('admin'));
     }
 
     public function sellLand() {

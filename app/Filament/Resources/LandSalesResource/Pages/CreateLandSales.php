@@ -24,6 +24,8 @@ class CreateLandSales extends CreateRecord
         $landRecord->address = null;
         $landRecord->nationality = null;
         $landRecord->occupation = null;
+        $landRecord->user_id = null;
+        $landRecord->is_available = false;
 
         // 2. Generate PDF receipt
         $pdf = Pdf::loadView('land-sale-receipt', [

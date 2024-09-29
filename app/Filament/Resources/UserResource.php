@@ -35,7 +35,9 @@ class UserResource extends Resource
                 TextInput::make('name'),
                 TextInput::make('email'),
                 TextInput::make('phone_no'),
-                TextInput::make('password')->password(),
+                TextInput::make('password')->password()
+                ->dehydrated(fn ($state) => filled($state))
+                ->required(fn (string $context): bool => $context === 'create'),
                 Toggle::make('is_admin')
                 ->onIcon('heroicon-m-user')
                 ->offIcon('heroicon-m-user')

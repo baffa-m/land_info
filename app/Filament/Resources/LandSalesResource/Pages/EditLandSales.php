@@ -19,6 +19,14 @@ class EditLandSales extends EditRecord
 
         // 1. Update the land record with the buyer's name
         $landRecord = LandRecords::find($landSale->land_record_id);
+        $landRecord->name = $landSale->buyer_name;
+        $landRecord->address = null;
+        $landRecord->nationality = null;
+        $landRecord->occupation = null;
+        $landRecord->user_id = null;
+        $landRecord->is_available = false;
+
+
         if ($landRecord) {
             $landRecord->name = $landSale->buyer_name;
 
