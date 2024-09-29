@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\LandRecordsResource\Pages;
 use App\Filament\Resources\LandRecordsResource\RelationManagers;
+use App\Filament\Resources\LandRecordsResource\Widgets\LandRecordsOverview;
 
 class LandRecordsResource extends Resource
 {
@@ -88,6 +89,12 @@ class LandRecordsResource extends Resource
             'index' => Pages\ListLandRecords::route('/'),
             'create' => Pages\CreateLandRecords::route('/create'),
             'edit' => Pages\EditLandRecords::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array {
+        return [
+            LandRecordsOverview::class,
         ];
     }
 }

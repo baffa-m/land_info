@@ -18,13 +18,14 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\LandSalesResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\LandSalesResource\RelationManagers;
+use App\Filament\Resources\LandSalesResource\Widgets\LandSalesOverview;
 use Filament\Forms\Components\DatePicker;
 
 class LandSalesResource extends Resource
 {
     protected static ?string $model = LandSales::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
     public static function form(Form $form): Form
     {
@@ -86,6 +87,12 @@ class LandSalesResource extends Resource
             'index' => Pages\ListLandSales::route('/'),
             'create' => Pages\CreateLandSales::route('/create'),
             'edit' => Pages\EditLandSales::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array {
+        return [
+            LandSalesOverview::class,
         ];
     }
 }

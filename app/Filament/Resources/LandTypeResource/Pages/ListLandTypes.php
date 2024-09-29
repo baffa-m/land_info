@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\LandTypeResource\Pages;
 
+use App\Filament\Resources\LandSalesResource\Widgets\LandSalesOverview;
 use App\Filament\Resources\LandTypeResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -14,6 +15,13 @@ class ListLandTypes extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            LandSalesOverview::class
         ];
     }
 }
