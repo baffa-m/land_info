@@ -60,6 +60,7 @@
 
                                     <div class="col-12 text-center">
                                         <p class="mb-0 mt-3"><small class="text-dark me-2">Don't have an account ?</small> <a href="{{ route('register')}}" class="text-dark fw-bold">Sign Up</a></p>
+                                        <p class="mb-0 mt-3"><small class="text-dark me-2">Login as admin ?</small> <a href="{{ url('/admin')}}" class="text-dark fw-bold">Login</a></p>
                                     </div><!--end col-->
                                 </div><!--end row-->
                             </form>
