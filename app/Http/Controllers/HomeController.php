@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Firms;
 use App\Models\LandRecords;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,11 @@ class HomeController extends Controller
 
     public function registerOwner() {
         return view('auth.register');
+    }
+
+    public function firms() {
+        $firms = Firms::all();
+        return view('firm.consult-firm', compact('firms'));
     }
 
     public function aboutUs() {

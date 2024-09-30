@@ -21,4 +21,9 @@ class Type extends Model
         return $this->hasMany(LandRecords::class);
     }
 
+    public function firms(): HasMany
+    {
+        return $this->hasMany(Firms::class);
+    }
+
 }

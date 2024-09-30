@@ -43,6 +43,12 @@ class LandRecordsResource extends Resource
                 ->disk('public')
                 ->directory('receipts')
                 ->required(),
+                Select::make('land_type_id')
+                    ->relationship('type', 'land_type') // Adjust the field name if necessary
+                    ->label('Land Type')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Select::make('is_available'),
 
             ]);

@@ -1,6 +1,11 @@
 <div>
     {{-- Success is as dangerous as failure. --}}
 
+    <style>
+        .form-control {
+            border-color: #343a40;
+        }
+    </style>
     <!-- Hero Start -->
     <section class="bg-half-170 d-table w-100" style="background: url('assets/images/real/1.jpg') center;">
         <div class="bg-overlay bg-black opacity-7"></div>

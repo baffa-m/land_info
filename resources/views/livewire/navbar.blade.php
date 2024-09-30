@@ -65,6 +65,7 @@
                     <li><a href="{{ route('index')}}" class="sub-menu-item">Home</a></li>
                     <li><a wire:click.prevent="checkAuth" href="{{ route('sell.land')}}" class="sub-menu-item">Sell</a></li>
                     <li><a href="{{ route('buy.land')}}" class="sub-menu-item">Buy</a></li>
+                    <li><a href="{{ route('firms')}}" class="sub-menu-item">Consult Our Experts</a></li>
                     <li><a href="{{ route('about.us') }}" class="sub-menu-item">About Us</a></li>
                     <li><a href="{{ route('contact.us') }}" class="sub-menu-item">Contact us</a></li>
                 </ul><!--end navigation menu-->

@@ -3,10 +3,6 @@
 
     <div class="offcanvas offcanvas-end shadow border-0" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" aria-modal="true" role="dialog">
         <div class="offcanvas-header p-4 border-bottom">
-            <h5 id="offcanvasRightLabel" class="mb-0">
-                <img src="assets/images/logo-dark.png" height="24" class="light-version" alt="">
-                <img src="assets/images/logo-light.png" height="24" class="dark-version" alt="">
-            </h5>
             <button type="button" class="btn-close d-flex align-items-center text-dark" data-bs-dismiss="offcanvas" aria-label="Close"><i class="uil uil-times fs-4"></i></button>
         </div>
         <div class="offcanvas-body p-4">
