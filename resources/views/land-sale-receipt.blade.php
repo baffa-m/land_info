@@ -7,12 +7,57 @@
         .header { text-align: center; margin-bottom: 20px; }
         .content { margin: 0 50px; }
         .footer { margin-top: 50px; }
-        .signature-section { margin-top: 40px; }
-        .signature-line { border-top: 1px solid #000; width: 200px; margin-top: 10px; }
-        .signature-label { font-size: 14px; margin-top: 5px; }
-        .signature-block { display: flex; justify-content: space-between; margin-bottom: 40px; }
-        .signature-item { text-align: center; }
+        .signature-block {
+            display: flex;
+            justify-content: space-between; /* Place items at the edges */
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .signature-item {
+            width: 45%; /* Each signature takes 45% of the width */
+            text-align: center; /* Center-align text within each block */
+        }
+
+        .signature-label {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid black;
+            margin-bottom: 10px;
+            height: 2px;
+        }
+
+        .signature-name {
+            margin-top: 10px;
+            font-weight: normal;
+            font-size: 1rem;
+        }
+
+        .witness-table {
+            width: 100%;
+            border-collapse: collapse; /* Ensures no gaps between table cells */
+        }
+
+        .witness-name {
+            padding-right: 200px; /* Adds space between name and line */
+            font-weight: bold;
+            text-align: left; /* Align name to the left */
+            white-space: nowrap; /* Prevents names from breaking into multiple lines */
+        }
+
+        .witness-line {
+            border-bottom: 1px solid black; /* Creates the line */
+            width: 30%; /* Makes the line span the available space */
+        }
+
     </style>
+
+    <link href="{{ asset('assets/css/bootstrap-green.min.css') }}" id="bootstrap-style" class="theme-opt" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
     <div class="header">
@@ -24,54 +69,48 @@
         <p><strong>Buyer Name:</strong> {{ $buyer_name }}</p>
         <p><strong>Seller Name:</strong> {{ $seller_name }}</p>
         <p><strong>Plot No:</strong> {{ $land_record }}</p>
-        <p><strong>Sale Amount:</strong> ₦{{ number_format($sale_amount, 2) }}</p>
+        <p><strong>Sale Amount:</strong>₦ {{ number_format($sale_amount, 2) }}</p>
         <p><strong>Sale Date:</strong> {{ $sale_date }}</p>
 
         <h4>Witnesses:</h4>
-        <ul>
+        <table class="witness-table">
             @foreach($witnesses as $witness)
                 @if($witness)
-                    <li>{{ $witness }}</li>
+                    <tr style="margin-bottom: 20px">
+                        <td class="witness-name" style="margin-bottom: 20px;">{{ $witness }}</td>
+                        <td class="witness-line" style="margin-bottom: 20px;"></td>
+                    </tr>
                 @endif
             @endforeach
-        </ul>
+        </table>
+
+
 
         <!-- Signature Section -->
         <div class="signature-section">
             <h4>Signatures:</h4>
 
-            <!-- Buyer and Seller Signature -->
-            <div class="signature-block">
-                <div class="signature-item">
-                    <p class="signature-label">Buyer Signature</p>
-                    <div class="signature-line"></div>
-                    <p>{{ $buyer_name }}</p>
-                </div>
+            <!-- Buyer and Seller Signature using a table -->
+            <table style="width: 100%; margin-top: 50px;">
+                <tr>
+                    <td style="text-align: left;">
+                        <div class="signature-line" style="width: 80%; border-bottom: 1px solid black; height: 2px;"></div>
+                        <p class="signature-name">{{ $buyer_name }}</p>
+                    </td>
 
-                <div class="signature-item">
-                    <p class="signature-label">Seller Signature</p>
-                    <div class="signature-line"></div>
-                    <p>{{ $seller_name }}</p>
-                </div>
-            </div>
+                    <td style="text-align: right;">
+                        <div class="signature-line" style="width: 100%; border-bottom: 1px solid black; height: 2px;"></div>
+                        <p class="signature-name">{{ $seller_name }}</p>
+                    </td>
+                </tr>
+            </table>
 
-            <!-- Witness Signatures -->
-            <div class="signature-block">
-                @foreach($witnesses as $witness)
-                    @if($witness)
-                        <div class="signature-item">
-                            <p class="signature-label">Witness Signature</p>
-                            <div class="signature-line"></div>
-                            <p>{{ $witness }}</p>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
+
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p>Thank you for your business!</p>
+            <p>Thank you for Trusting Us!</p>
         </div>
     </div>
 </body>
