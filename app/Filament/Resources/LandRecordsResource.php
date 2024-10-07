@@ -49,7 +49,15 @@ class LandRecordsResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required(),
-                Select::make('is_available'),
+                    Select::make('is_available')
+                    ->label('Is Available')
+                    ->options([
+                        true => 'Yes',
+                        false => 'No',
+                    ])
+                    ->default(true) // Optionally set a default value
+                    ->required()
+                    ->boolean(),
 
             ]);
     }
