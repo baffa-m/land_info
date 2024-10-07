@@ -13,7 +13,9 @@
                 <div class="card shadow rounded border-0 mt-4">
                     <div class="card-body">
                         <h4 class="card-title text-center">Signup</h4>
-                        <form action="{{ route('register')}}" method="post" class="login-form mt-4">
+                        <form action="{{ route('register.post')}}" method="POST" class="login-form mt-4">
+                            @csrf
+                            @method('POST')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">

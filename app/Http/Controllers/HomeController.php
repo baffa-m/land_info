@@ -54,14 +54,13 @@ class HomeController extends Controller
     }
 
     public function register(Request $request) {
-        $validator = Validator::make($request->all(), [
+        $request->validate(
+            [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed', // 'password_confirmation' is required for this
             'phone_no' => 'required|string|max:15', // Assuming max length of 15 for phone numbers
         ]);
-
-
 
         // Create and save the user
         $user = User::create([
