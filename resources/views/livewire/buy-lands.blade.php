@@ -42,7 +42,7 @@
                                         <label class="form-label dark-border">Land Size :</label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="search" class="fea icon-sm icons"></i>
-                                            <input wire:model.live.debounce.300ms="plot_size" name="plot_size" id="name" type="text" class="form-control ps-5" placeholder="Search (in Sq) :">
+                                            <input wire:model.live.debounce.300ms="plot_size" name="plot_size" id="name" type="text" class="form-control ps-5" placeholder="Search (in Sqm) :">
                                         </div>
                                     </div>
                                 </div><!--end col-->
@@ -100,7 +100,7 @@
                             <ul class="list-unstyled mt-3 py-3 border-top border-bottom d-flex align-items-center">
                                 <li class="d-flex align-items-center me-3">
                                     <i class="uil uil-compress-arrows fs-5 me-1 text-primary"></i>
-                                    <span class="text-muted">Plot Size: {{ $land->plot_size }}sqf</span>
+                                    <span class="text-muted">Plot Size: {{ $land->plot_size }}sqm</span>
                                 </li>
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-between mt-2 mb-0">

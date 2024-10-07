@@ -12,6 +12,8 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/register', [HomeController::class, 'registerOwner'])->name('register');
+Route::post('/register', [HomeController::class, 'register'])->name('register');
+
 Route::get('/sell', [HomeController::class, 'sellLand'])->name('sell.land');
 Route::post('/sell', [LandRecordsController::class, 'store'])->name('sell.land.store');
 

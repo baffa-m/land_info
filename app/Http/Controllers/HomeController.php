@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Firms;
 use App\Models\LandRecords;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -49,5 +51,28 @@ class HomeController extends Controller
 
         return redirect()->to('/');
 
+    }
+
+    public function register(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed', // 'password_confirmation' is required for this
+            'phone_no' => 'required|string|max:15', // Assuming max length of 15 for phone numbers
+        ]);
+
+
+
+        // Create and save the user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // Securely hash the password
+            'phone_no' => $request->phone_no,
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->route('index');
     }
 }
