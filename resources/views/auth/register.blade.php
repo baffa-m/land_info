@@ -23,6 +23,11 @@
                                             <input type="text" class="form-control ps-5" placeholder="Name" name="name" required="">
                                         </div>
                                     </div>
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div><!--end col-->
 
 
@@ -34,6 +39,11 @@
                                             <input type="email" name="email" class="form-control ps-5" placeholder="Email" name="email" required="">
                                         </div>
                                     </div>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div><!--end col-->
 
                                 <div class="col-md-12">
@@ -44,6 +54,11 @@
                                             <input type="text" name="phone_no" class="form-control ps-5" placeholder="Phone Number" name="email" required="">
                                         </div>
                                     </div>
+                                    @error('phone_no')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div><!--end col-->
 
                                 <div class="col-md-12">
@@ -54,6 +69,11 @@
                                             <input type="password" name="password" class="form-control ps-5" placeholder="Password" required="">
                                         </div>
                                     </div>
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div><!--end col-->
 
                                 <div class="col-md-12">
